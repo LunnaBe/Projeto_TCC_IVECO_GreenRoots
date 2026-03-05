@@ -1,0 +1,299 @@
+﻿<Window x:Class="AppGreenRoots.Views.LoginView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:AppGreenRoots.ViewModels"
+        Title="AppGreenRoots" Width="900" Height="560"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize" WindowStyle="None"
+        AllowsTransparency="True" Background="Transparent">
+
+    <Window.DataContext>
+        <vm:LoginViewModel />
+    </Window.DataContext>
+
+    <Window.Resources>
+        <SolidColorBrush x:Key="BgDark"     Color="#0D1A12"/>
+        <SolidColorBrush x:Key="BgCard"     Color="#13261A"/>
+        <SolidColorBrush x:Key="Green"      Color="#2ECC71"/>
+        <SolidColorBrush x:Key="GreenLight" Color="#57F09C"/>
+        <SolidColorBrush x:Key="GreenDark"  Color="#1A8A4A"/>
+        <SolidColorBrush x:Key="TextLight"  Color="#E8F5EE"/>
+        <SolidColorBrush x:Key="TextMuted"  Color="#6B9E7A"/>
+        <SolidColorBrush x:Key="InputBg"    Color="#1C3326"/>
+        <SolidColorBrush x:Key="BorderClr"  Color="#2A5038"/>
+
+        <Style x:Key="Input" TargetType="TextBox">
+            <Setter Property="Background" Value="{StaticResource InputBg}"/>
+            <Setter Property="Foreground" Value="{StaticResource TextLight}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource BorderClr}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="12,0"/>
+            <Setter Property="Height" Value="42"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="CaretBrush" Value="{StaticResource Green}"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="8">
+                            <ScrollViewer x:Name="PART_ContentHost"
+                                          Margin="{TemplateBinding Padding}"
+                                          VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsFocused" Value="True">
+                                <Setter Property="BorderBrush" Value="{StaticResource Green}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="Pass" TargetType="PasswordBox">
+            <Setter Property="Background" Value="{StaticResource InputBg}"/>
+            <Setter Property="Foreground" Value="{StaticResource TextLight}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource BorderClr}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="12,0"/>
+            <Setter Property="Height" Value="42"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="PasswordBox">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="8">
+                            <ScrollViewer x:Name="PART_ContentHost"
+                                          Margin="{TemplateBinding Padding}"
+                                          VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsFocused" Value="True">
+                                <Setter Property="BorderBrush" Value="{StaticResource Green}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="BtnMain" TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource Green}"/>
+            <Setter Property="Foreground" Value="#0D1A12"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Height" Value="42"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="bd" Background="{TemplateBinding Background}" CornerRadius="8">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="bd" Property="Background" Value="{StaticResource GreenLight}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="BtnLink" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="{StaticResource Green}"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <TextBlock x:Name="t" Text="{TemplateBinding Content}"
+                                   Foreground="{TemplateBinding Foreground}"
+                                   TextDecorations="Underline"/>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="t" Property="Foreground" Value="{StaticResource GreenLight}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Border CornerRadius="16" Background="{StaticResource BgDark}">
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="40" ShadowDepth="0" Color="#000000" Opacity="0.6"/>
+        </Border.Effect>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="360"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Painel esquerdo -->
+            <Border Grid.Column="0" CornerRadius="16,0,0,16">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#0D1A12" Offset="0"/>
+                        <GradientStop Color="#1A4D2E" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="48,0">
+                    <TextBlock Text="🌱" FontSize="52" HorizontalAlignment="Center" Margin="0,0,0,12"/>
+                    <TextBlock Text="AppGreenRoots" FontSize="24" FontWeight="Bold"
+                               Foreground="{StaticResource Green}" FontFamily="Segoe UI"
+                               HorizontalAlignment="Center"/>
+                    <TextBlock Text="Passaporte Digital de Carbono" FontSize="12"
+                               Foreground="{StaticResource TextMuted}" FontFamily="Segoe UI"
+                               HorizontalAlignment="Center" Margin="0,6,0,28"/>
+                    <Rectangle Height="1" Fill="{StaticResource BorderClr}" Margin="0,0,0,20"/>
+                    <TextBlock FontSize="12" Foreground="{StaticResource TextMuted}" FontFamily="Segoe UI"
+                               TextWrapping="Wrap" TextAlignment="Center" LineHeight="20"
+                               Text="Monitore emissões, rastreie componentes e gere relatórios de sustentabilidade em tempo real."/>
+                </StackPanel>
+            </Border>
+
+            <!-- Painel direito -->
+            <Border Grid.Column="1" Background="{StaticResource BgCard}" CornerRadius="0,16,16,0">
+                <Grid>
+                    <Button Content="✕" HorizontalAlignment="Right" VerticalAlignment="Top"
+                            Margin="0,12,12,0" Width="26" Height="26" FontSize="12"
+                            Foreground="{StaticResource TextMuted}" Background="Transparent"
+                            BorderThickness="0" Cursor="Hand" Click="BtnFechar_Click"/>
+
+                    <StackPanel Margin="40,0" VerticalAlignment="Center">
+
+                        <TextBlock FontSize="21" FontWeight="Bold" FontFamily="Segoe UI"
+                                   Foreground="{StaticResource TextLight}" Margin="0,0,0,4">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Text" Value="Bem-vindo de volta"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsCadastro}" Value="True">
+                                            <Setter Property="Text" Value="Criar conta"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+
+                        <TextBlock FontSize="12" FontFamily="Segoe UI"
+                                   Foreground="{StaticResource TextMuted}" Margin="0,0,0,24">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Text" Value="Acesse sua conta para continuar"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsCadastro}" Value="True">
+                                            <Setter Property="Text" Value="Preencha os dados para se registrar"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+
+                        <!-- Nome (só cadastro) -->
+                        <StackPanel Margin="0,0,0,12">
+                            <StackPanel.Style>
+                                <Style TargetType="StackPanel">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsCadastro}" Value="True">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </StackPanel.Style>
+                            <TextBlock Text="NOME" FontSize="11" Foreground="{StaticResource TextMuted}"
+                                       FontFamily="Segoe UI" Margin="0,0,0,4"/>
+                            <TextBox Style="{StaticResource Input}"
+                                     Text="{Binding Nome, UpdateSourceTrigger=PropertyChanged}"/>
+                        </StackPanel>
+
+                        <!-- E-mail -->
+                        <TextBlock Text="E-MAIL" FontSize="11" Foreground="{StaticResource TextMuted}"
+                                   FontFamily="Segoe UI" Margin="0,0,0,4"/>
+                        <TextBox Style="{StaticResource Input}" Margin="0,0,0,12"
+                                 Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <!-- Senha -->
+                        <TextBlock Text="SENHA" FontSize="11" Foreground="{StaticResource TextMuted}"
+                                   FontFamily="Segoe UI" Margin="0,0,0,4"/>
+                        <PasswordBox Style="{StaticResource Pass}" Margin="0,0,0,16"
+                                     x:Name="PbSenha" PasswordChanged="PbSenha_PasswordChanged"/>
+
+                        <!-- Mensagem feedback -->
+                        <TextBlock Text="{Binding Mensagem}" FontSize="12" FontFamily="Segoe UI"
+                                   TextWrapping="Wrap" Margin="0,0,0,12">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Foreground" Value="#E74C3C"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Mensagem}" Value="">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+
+                        <!-- Botão principal -->
+                        <Button Margin="0,0,0,14">
+                            <Button.Style>
+                                <Style TargetType="Button" BasedOn="{StaticResource BtnMain}">
+                                    <Setter Property="Content" Value="Entrar"/>
+                                    <Setter Property="Command" Value="{Binding LoginCommand}"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsCadastro}" Value="True">
+                                            <Setter Property="Content" Value="Criar Conta"/>
+                                            <Setter Property="Command" Value="{Binding CadastrarCommand}"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+
+                        <!-- Alternar modo -->
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <TextBlock FontSize="13" Foreground="{StaticResource TextMuted}"
+                                       FontFamily="Segoe UI" VerticalAlignment="Center">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Text" Value="Não tem conta? "/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsCadastro}" Value="True">
+                                                <Setter Property="Text" Value="Já tem conta? "/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                            <Button Command="{Binding AlternarModoCommand}">
+                                <Button.Style>
+                                    <Style TargetType="Button" BasedOn="{StaticResource BtnLink}">
+                                        <Setter Property="Content" Value="Cadastre-se"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsCadastro}" Value="True">
+                                                <Setter Property="Content" Value="Fazer login"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+                            </Button>
+                        </StackPanel>
+
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </Grid>
+    </Border>
+</Window>

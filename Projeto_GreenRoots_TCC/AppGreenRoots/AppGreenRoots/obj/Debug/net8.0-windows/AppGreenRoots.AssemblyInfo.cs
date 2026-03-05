@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AppGreenRoots")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+326e814ab98faecc678d3419b497c5419ea594b1")]
 [assembly: System.Reflection.AssemblyProductAttribute("AppGreenRoots")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AppGreenRoots")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
