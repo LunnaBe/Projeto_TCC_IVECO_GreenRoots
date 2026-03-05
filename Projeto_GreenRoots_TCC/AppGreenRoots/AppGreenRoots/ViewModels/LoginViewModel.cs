@@ -38,13 +38,13 @@ public class LoginViewModel : INotifyPropertyChanged
 
     private void ExecutarLogin()
     {
-        // TODO: ligar ao banco depois
+        
         Mensagem = "Login ainda não implementado.";
     }
 
     private void ExecutarCadastro()
     {
-        // TODO: ligar ao banco depois
+        
         Mensagem = "Cadastro ainda não implementado.";
     }
 
