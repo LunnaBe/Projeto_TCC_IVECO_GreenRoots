@@ -7,17 +7,19 @@
              Background="Transparent">
 
     <UserControl.Resources>
-        <SolidColorBrush x:Key="BgDark"     Color="#0D1A12"/>
-        <SolidColorBrush x:Key="BgCard"     Color="#13261A"/>
+        <SolidColorBrush x:Key="BgDark"     Color="#092e1c"/>
+        <SolidColorBrush x:Key="BgGrennDark"     Color="#0d4329"/>
+        <SolidColorBrush x:Key="BgCard"     Color="#0f5433"/>
         <SolidColorBrush x:Key="Green"      Color="#2ECC71"/>
-        <SolidColorBrush x:Key="GreenLight" Color="#57F09C"/>
+        <SolidColorBrush x:Key="GreenLight" Color="#5c9a46"/>
         <SolidColorBrush x:Key="TextLight"  Color="#E8F5EE"/>
         <SolidColorBrush x:Key="TextMuted"  Color="#6B9E7A"/>
-        <SolidColorBrush x:Key="InputBg"    Color="#1C3326"/>
+        <SolidColorBrush x:Key="InputBg"    Color="#12844d"/>
         <SolidColorBrush x:Key="BorderClr"  Color="#2A5038"/>
+        <SolidColorBrush x:Key="Bronw"  Color="#522828"/>
 
         <Style x:Key="Input" TargetType="TextBox">
-            <Setter Property="Background" Value="{StaticResource InputBg}"/>
+            <Setter Property="Background" Value="{StaticResource BgGrennDark}"/>
             <Setter Property="Foreground" Value="{StaticResource TextLight}"/>
             <Setter Property="BorderBrush" Value="{StaticResource BorderClr}"/>
             <Setter Property="BorderThickness" Value="1"/>
@@ -49,7 +51,7 @@
         </Style>
 
         <Style x:Key="Pass" TargetType="PasswordBox">
-            <Setter Property="Background" Value="{StaticResource InputBg}"/>
+            <Setter Property="Background" Value="{StaticResource BgGrennDark}"/>
             <Setter Property="Foreground" Value="{StaticResource TextLight}"/>
             <Setter Property="BorderBrush" Value="{StaticResource BorderClr}"/>
             <Setter Property="BorderThickness" Value="1"/>
@@ -79,8 +81,8 @@
         </Style>
 
         <Style x:Key="BtnMain" TargetType="Button">
-            <Setter Property="Background" Value="{StaticResource Green}"/>
-            <Setter Property="Foreground" Value="#0D1A12"/>
+            <Setter Property="Background" Value="{StaticResource InputBg}"/>
+            <Setter Property="Foreground" Value="#FFFFFF"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="Height" Value="42"/>
@@ -103,7 +105,7 @@
 
         <Style x:Key="BtnLink" TargetType="Button">
             <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="Foreground" Value="{StaticResource Green}"/>
+            <Setter Property="Foreground" Value="{StaticResource TextLight}"/>
             <Setter Property="FontSize" Value="13"/>
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Cursor" Value="Hand"/>
@@ -139,22 +141,20 @@
             <Border Grid.Column="0" CornerRadius="16,0,0,16">
                 <Border.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                        <GradientStop Color="#0D1A12" Offset="0"/>
-                        <GradientStop Color="#1A4D2E" Offset="1"/>
+                        <GradientStop Color="#5c9a46" Offset="0"/>
+                        <GradientStop Color="#126b40" Offset="1"/>
                     </LinearGradientBrush>
                 </Border.Background>
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="48,0">
-                    <TextBlock Text="🌱" FontSize="52" HorizontalAlignment="Center" Margin="0,0,0,12"/>
-                    <TextBlock Text="AppGreenRoots" FontSize="24" FontWeight="Bold"
-                               Foreground="{StaticResource Green}" FontFamily="Segoe UI"
+                    <TextBlock Text="🌱" FontSize="70" HorizontalAlignment="Center" Margin="0,0,0,12" 
+                               Foreground="{StaticResource BgDark}"/>
+                    <TextBlock Text="AppGreenRoots" FontSize="40" FontWeight="Bold"
+                               Foreground="{StaticResource BgDark}" FontFamily="Segoe UI"
                                HorizontalAlignment="Center"/>
-                    <TextBlock Text="Passaporte Digital de Carbono" FontSize="12"
-                               Foreground="{StaticResource TextMuted}" FontFamily="Segoe UI"
+                    <TextBlock Text="Passaporte Digital de Carbono" FontSize="18"
+                               Foreground="{StaticResource BgDark}" FontFamily="Segoe UI"
                                HorizontalAlignment="Center" Margin="0,6,0,28"/>
-                    <Rectangle Height="1" Fill="{StaticResource BorderClr}" Margin="0,0,0,20"/>
-                    <TextBlock FontSize="12" Foreground="{StaticResource TextMuted}" FontFamily="Segoe UI"
-                               TextWrapping="Wrap" TextAlignment="Center" LineHeight="20"
-                               Text="Monitore emissões, rastreie componentes e gere relatórios de sustentabilidade em tempo real."/>
+                    
                 </StackPanel>
             </Border>
 

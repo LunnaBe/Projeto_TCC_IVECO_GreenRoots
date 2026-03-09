@@ -15,5 +15,6 @@ public partial class LoginView : UserControl
     {
         if (DataContext is LoginViewModel vm)
             vm.Senha = PbSenha.Password;
+        
     }
 }

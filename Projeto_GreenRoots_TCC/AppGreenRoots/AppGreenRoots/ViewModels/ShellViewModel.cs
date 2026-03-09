@@ -23,7 +23,7 @@ public class ShellViewModel : BaseViewModel
 
     public void NavigateDashboard()
     {
-        CurrentViewModel = new DashboardViewModel(this);
+        CurrentViewModel = new TelaInicialViewModel(this);
     }
 
     public void NavigatePassaporte()

@@ -11,8 +11,8 @@
             <views:LoginView/>
         </DataTemplate>
 
-        <DataTemplate DataType="{x:Type vm:DashboardViewModel}">
-            <views:DashboardView/>
+        <DataTemplate DataType="{x:Type vm:TelaInicialViewModel}">
+            <views:TelaInicialView/>
         </DataTemplate>
 
         <DataTemplate DataType="{x:Type vm:PassaporteWizardViewModel}">

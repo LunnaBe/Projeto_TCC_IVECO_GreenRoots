@@ -3,20 +3,20 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              Background="Transparent">
 
-    <UserControl.Resources>
-        <SolidColorBrush x:Key="BgDark"    Color="#0D1A12"/>
-        <SolidColorBrush x:Key="BgCard"    Color="#13261A"/>
-        <SolidColorBrush x:Key="BgInput"   Color="#1C3326"/>
-        <SolidColorBrush x:Key="Green"     Color="#27AE60"/>
-        <SolidColorBrush x:Key="GreenHover" Color="#2ECC71"/>
+    <UserControl.Resources> 
+        <SolidColorBrush x:Key="BgDark"    Color="#0d4329"/>
+        <SolidColorBrush x:Key="BgCard"    Color="#126b40"/>
+        <SolidColorBrush x:Key="BgInput"   Color="#5c9a46"/>
+        <SolidColorBrush x:Key="Green"     Color="#12844d"/>
+        <SolidColorBrush x:Key="GreenHover" Color="#85b544"/>
         <SolidColorBrush x:Key="White"     Color="#E8F5EE"/>
         <SolidColorBrush x:Key="TextMuted" Color="#7FB896"/>
-        <SolidColorBrush x:Key="BorderClr" Color="#2A5038"/>
+        <SolidColorBrush x:Key="BorderClr" Color="#5c9a46"/>
 
         <!-- TextBox -->
         <Style TargetType="TextBox">
-            <Setter Property="Background"              Value="{StaticResource BgInput}"/>
-            <Setter Property="Foreground"              Value="{StaticResource White}"/>
+            <Setter Property="Background"              Value="{StaticResource White}"/>
+            <Setter Property="Foreground"              Value="{StaticResource BgDark}"/>
             <Setter Property="BorderBrush"             Value="{StaticResource BorderClr}"/>
             <Setter Property="BorderThickness"         Value="1"/>
             <Setter Property="Padding"                 Value="10,0"/>
@@ -48,8 +48,8 @@
 
         <!-- Botão principal -->
         <Style x:Key="BtnMain" TargetType="Button">
-            <Setter Property="Background"      Value="{StaticResource Green}"/>
-            <Setter Property="Foreground"      Value="#0D1A12"/>
+            <Setter Property="Background"      Value="{StaticResource BgDark}"/>
+            <Setter Property="Foreground"      Value="#E8F5EE"/>
             <Setter Property="FontWeight"      Value="Bold"/>
             <Setter Property="FontSize"        Value="13"/>
             <Setter Property="FontFamily"      Value="Segoe UI"/>
@@ -58,8 +58,9 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border x:Name="bd" Background="{TemplateBinding Background}"
-                                CornerRadius="6" Padding="{TemplateBinding Padding}">
+                        <Border x:Name="bd" CornerRadius="6"
+                                BorderBrush="{StaticResource White}" BorderThickness="1"
+                                Background="Transparent" Padding="{TemplateBinding Padding}">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
                         <ControlTemplate.Triggers>
@@ -74,8 +75,8 @@
 
         <!-- Botão outline -->
         <Style x:Key="BtnOutline" TargetType="Button">
-            <Setter Property="Background"      Value="Transparent"/>
-            <Setter Property="Foreground"      Value="{StaticResource TextMuted}"/>
+            <Setter Property="Background"      Value="White"/>
+            <Setter Property="Foreground"      Value="{StaticResource White}"/>
             <Setter Property="FontSize"        Value="12"/>
             <Setter Property="FontFamily"      Value="Segoe UI"/>
             <Setter Property="BorderThickness" Value="0"/>
@@ -84,7 +85,7 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
                         <Border x:Name="bd" CornerRadius="6"
-                                BorderBrush="{StaticResource BorderClr}" BorderThickness="1"
+                                BorderBrush="{StaticResource White}" BorderThickness="1"
                                 Background="Transparent" Padding="{TemplateBinding Padding}">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
@@ -100,12 +101,12 @@
         </Style>
 
         <!-- DataGrid -->
-        <Style TargetType="DataGrid">
-            <Setter Property="Background"            Value="{StaticResource BgCard}"/>
-            <Setter Property="Foreground"            Value="{StaticResource White}"/>
-            <Setter Property="BorderBrush"           Value="{StaticResource BorderClr}"/>
+        <Style TargetType="DataGrid" >
+            <Setter Property="Background"            Value="{StaticResource White}"/>
+            <Setter Property="Foreground"            Value="{StaticResource BgDark}"/>
+            <Setter Property="BorderBrush"           Value="{StaticResource White}"/>
             <Setter Property="BorderThickness"       Value="1"/>
-            <Setter Property="RowBackground"         Value="{StaticResource BgCard}"/>
+            <Setter Property="RowBackground"         Value="{StaticResource BgDark}"/>
             <Setter Property="AlternatingRowBackground" Value="#182E1F"/>
             <Setter Property="HorizontalGridLinesBrush" Value="#2A5038"/>
             <Setter Property="VerticalGridLinesBrush"   Value="#2A5038"/>
@@ -114,20 +115,21 @@
         </Style>
 
         <Style TargetType="DataGridColumnHeader">
-            <Setter Property="Background"   Value="#1A3D28"/>
-            <Setter Property="Foreground"   Value="{StaticResource TextMuted}"/>
+            <Setter Property="Background"   Value="#2A5038"/>
+            <Setter Property="Foreground"   Value="{StaticResource White}"/>
             <Setter Property="FontWeight"   Value="Bold"/>
             <Setter Property="FontSize"     Value="11"/>
             <Setter Property="Padding"      Value="10,6"/>
-            <Setter Property="BorderBrush"  Value="{StaticResource BorderClr}"/>
+            <Setter Property="BorderBrush"  Value="{StaticResource BgDark}"/>
             <Setter Property="BorderThickness" Value="0,0,1,1"/>
         </Style>
+        
 
         <Style TargetType="DataGridRow">
             <Setter Property="Foreground" Value="{StaticResource White}"/>
             <Style.Triggers>
                 <Trigger Property="IsSelected" Value="True">
-                    <Setter Property="Background" Value="#1A4D2E"/>
+                    <Setter Property="Background" Value="#E8F5EE"/>
                 </Trigger>
             </Style.Triggers>
         </Style>
@@ -171,7 +173,7 @@
                 <!-- Energia -->
                 <StackPanel Grid.Row="0" Margin="0,0,0,14">
                     <TextBlock Text="ENERGIA (kWh)" FontSize="10" FontWeight="Bold"
-                               Foreground="{StaticResource TextMuted}" FontFamily="Segoe UI"
+                               Foreground="{StaticResource White}" FontFamily="Segoe UI"
                                Margin="0,0,0,4"/>
                     <TextBox Text="{Binding EnergiaKwh, UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
@@ -189,7 +191,7 @@
 
                         <TextBlock Grid.Row="0" Text="ADICIONAR MATERIAL"
                                    FontSize="10" FontWeight="Bold" FontFamily="Segoe UI"
-                                   Foreground="{StaticResource TextMuted}" Margin="0,0,0,10"/>
+                                   Foreground="{StaticResource White}" Margin="0,0,0,10"/>
 
                         <Grid Grid.Row="1">
                             <Grid.ColumnDefinitions>
@@ -201,19 +203,19 @@
 
                             <StackPanel Grid.Column="0" Margin="0,0,10,0">
                                 <TextBlock Text="Nome" FontSize="11" FontFamily="Segoe UI"
-                                           Foreground="{StaticResource TextMuted}" Margin="0,0,0,4"/>
+                                           Foreground="{StaticResource White}" Margin="0,0,0,4"/>
                                 <TextBox Text="{Binding MaterialNome, UpdateSourceTrigger=PropertyChanged}"/>
                             </StackPanel>
 
                             <StackPanel Grid.Column="1" Margin="0,0,10,0">
                                 <TextBlock Text="Peso" FontSize="11" FontFamily="Segoe UI"
-                                           Foreground="{StaticResource TextMuted}" Margin="0,0,0,4"/>
+                                           Foreground="{StaticResource White}" Margin="0,0,0,4"/>
                                 <TextBox Text="{Binding MaterialPeso, UpdateSourceTrigger=PropertyChanged}"/>
                             </StackPanel>
 
                             <StackPanel Grid.Column="2" Margin="0,0,10,0">
                                 <TextBlock Text="Fator CO₂" FontSize="11" FontFamily="Segoe UI"
-                                           Foreground="{StaticResource TextMuted}" Margin="0,0,0,4"/>
+                                           Foreground="{StaticResource White}" Margin="0,0,0,4"/>
                                 <TextBox Text="{Binding MaterialFator, UpdateSourceTrigger=PropertyChanged}"/>
                             </StackPanel>
 
@@ -234,7 +236,7 @@
                     <DockPanel>
                         <TextBlock DockPanel.Dock="Top" Text="MATERIAIS ADICIONADOS"
                                    FontSize="10" FontWeight="Bold" FontFamily="Segoe UI"
-                                   Foreground="{StaticResource TextMuted}" Margin="0,0,0,10"/>
+                                   Foreground="{StaticResource White}" Margin="0,0,0,10"/>
 
                         <Button DockPanel.Dock="Top" Content="Remover selecionado"
                                 Style="{StaticResource BtnOutline}"
